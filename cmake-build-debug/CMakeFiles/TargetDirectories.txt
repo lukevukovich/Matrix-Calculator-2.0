@@ -1,0 +1,3 @@
+F:/Programming/C++/MatrixCalculator2.0/cmake-build-debug/CMakeFiles/MatrixCalculator2_0.dir
+F:/Programming/C++/MatrixCalculator2.0/cmake-build-debug/CMakeFiles/edit_cache.dir
+F:/Programming/C++/MatrixCalculator2.0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
