@@ -3,4 +3,5 @@ Object oriented version of Matrix Calculator. Includes add, subtract, multiply, 
 Inludes two classes: Controller and Calculator. Calculator inherits Controller and acts as an extension.
 
 To do list:
+* Create Matrix class that stores matrix and dimensions
 * Option to edit individual matrix
