@@ -1,8 +1,6 @@
 # ninja log v5
-3	397	6916328832472983	build.ninja	7539a18dc3167539
-1	284	6916253745593982	CMakeFiles/MatrixCalculator2_0.dir/main.cpp.obj	71bfc67a657bf9b4
-1	303	6916256739338538	CMakeFiles/MatrixCalculator2_0.dir/Controller/Controller.cpp.obj	5ef07f9d4cf043e2
-304	474	6916256740980736	MatrixCalculator2_0.exe	5c5d05a0da320598
-5	372	6916328840956545	CMakeFiles/MatrixCalculator2_0.dir/main.cpp.obj	aef8a3fa16eeb7e3
-1	377	6916328841016865	CMakeFiles/MatrixCalculator2_0.dir/Controller/Controller.cpp.obj	f618593874246660
-377	619	6916328843374257	MatrixCalculator2_0.exe	5c5d05a0da320598
+3	397	6919091817193769	build.ninja	7539a18dc3167539
+4	600	6916982018396180	CMakeFiles/MatrixCalculator2_0.dir/main.cpp.obj	eb4985d75565f2e8
+2	683	6916990358162566	CMakeFiles/MatrixCalculator2_0.dir/Controller/Controller.cpp.obj	858cdecd1352ed38
+683	980	6916990361045421	MatrixCalculator2_0.exe	1503f4920e48ef34
+4	679	6916990358142004	CMakeFiles/MatrixCalculator2_0.dir/Calculator/Calculator.cpp.obj	b5a3d1a43822b217
