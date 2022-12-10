@@ -48,17 +48,16 @@ int main() {
 
         //If user does not opt to keep prev data
         if (!keepPrevData) {
-            //Set all matrix values to 0
-            calculator.resetAll();
 
             if (calculator.getOperation() != 'x') {
                 //Perform first matrix data input
-                calculator.operandInput(FIRST);
+                calculator.inputMatrix1();
 
                 if (calculator.getOperation() != 't')
                     //Perform second matrix data input
-                    calculator.operandInput(SECOND);
+                    calculator.inputMatrix2();
             }
+
         }
 
         //Perform corresponding operation
