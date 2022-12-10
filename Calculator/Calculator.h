@@ -10,6 +10,9 @@
  */
 class Calculator: public Controller {
 
+private:
+    //Controller controller;
+
 public:
     Calculator() = default;
 

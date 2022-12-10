@@ -5,173 +5,200 @@
 
 using namespace std;
 
-//Set specific operand matrix values
-//Takes in matrix/dimension values & which operand matrix to set
-void Controller::setOperand(int m[][MATRIX], int d[], MATRIX_ENUM matrix) {
-    int i, j;
-
-    //If first operand matrix
-    if (matrix == FIRST) {
-        //Set dimension attribute
-        d1[0] = d[0];
-        d1[1] = d[1];
-        //Loop by dimensions
-        for (i = 0; i < d1[0]; i++) {
-            for (j = 0; j < d1[1]; j++)
-                //Set values of matrix attribute
-                matrix1[i][j] = m[i][j];
-        }
-    }
-
-    //If second operand matrix
-    else if (matrix == SECOND) {
-        d2[0] = d[0];
-        d2[1] = d[1];
-        for (i = 0; i < d2[0]; i++) {
-            for (j = 0; j < d2[1]; j++)
-                matrix2[i][j] = m[i][j];
-        }
-    }
-}
-
-//Reset values & dimensions of all three matrices
-void Controller::resetAll() {
-    int i, j;
-
-    for (i = 0; i < MATRIX; i++) {
-        for (j = 0; j < MATRIX; j++) {
-            matrix1[i][j] = 0;
-            matrix2[i][j] = 0;
-            matrix3[i][j] = 0;
-        }
-    }
-
-    for (i = 0; i < DIM; i++) {
-        d1[i] = 0;
-        d2[i] = 0;
-        d3[i] = 0;
-    }
-}
-
-//Print specific operand matrix in formatted form
-void Controller::printOperand(MATRIX_ENUM matrix) {
+//Print first operand matrix in formatted form
+void Controller::printMatrix1() {
     int i, j;
 
     //Print header
-    cout << "\n(" << operation <<  ") MATRIX " << matrix + 1 << ":\n";
+    cout << "\n(" << operation <<  ") MATRIX 1:\n";
 
-    //If first operand matrix
-    if (matrix == FIRST) {
-        //Loop by dimensions
-        for (i = 0; i < d1[0]; i++) {
-            cout << ("[");
-            for (j = 0; j < d1[1]; j++) {
-                //Print value
-                cout << matrix1[i][j];
-                //Print comma if needed
-                if (j + 1 != d1[1])
-                    cout << (", ");
-            }
-            cout << ("]\n");
-        }
-    }
-    //If second operand matrix
-    else if (matrix == SECOND) {
-        for (i = 0; i < d2[0]; i++) {
-            cout << ("[");
-            for (j = 0; j < d2[1]; j++) {
-                cout << matrix2[i][j];
-                if (j + 1 != d2[1])
-                    cout << (", ");
-            }
-            cout << ("]\n");
-        }
-    }
-}
-
-//Print result matrix
-//Same process as printOperand function
-void Controller::printResult() {
-    int i, j;
-
-    cout << "\n(" << operation << ") MATRIX RESULT:\n";
-
-    for (i = 0; i < d3[0]; i++) {
+    //Loop by dimensions
+    for (i = 0; i < matrix1.rows; i++) {
         cout << ("[");
-        for (j = 0; j < d3[1]; j++) {
-            cout << matrix3[i][j];
-            if (j + 1 != d3[1])
+        for (j = 0; j < matrix1.cols; j++) {
+            //Print value
+            cout << matrix1.matrix[i][j];
+            //Print comma if needed
+            if (j + 1 != matrix1.cols)
                 cout << (", ");
         }
         cout << ("]\n");
     }
 }
 
-//Get input for a matrix. Set specific operand matrix values to input values
-void Controller::operandInput(MATRIX_ENUM matrix) {
-    //Print header
-    cout << "\n(" << operation << ") MATRIX " << matrix + 1 <<" INPUT:\n";
+//Print second operand matrix in formatted form
+void Controller::printMatrix2() {
+    int i, j;
 
-    //Create matrix & dimensions for input
-    int m[MATRIX][MATRIX];
-    int d[DIM];
+    //Print header
+    cout << "\n(" << operation <<  ") MATRIX 2:\n";
+
+    //Loop by dimensions
+    for (i = 0; i < matrix2.rows; i++) {
+        cout << ("[");
+        for (j = 0; j < matrix2.cols; j++) {
+            //Print value
+            cout << matrix2.matrix[i][j];
+            //Print comma if needed
+            if (j + 1 != matrix2.cols)
+                cout << (", ");
+        }
+        cout << ("]\n");
+    }
+}
+
+//Print result matrix in formatted form
+//Same process as other matrix print functions
+void Controller::printResult() {
+    int i, j;
+
+    cout << "\n(" << operation << ") MATRIX RESULT:\n";
+
+    for (i = 0; i < result.rows; i++) {
+        cout << ("[");
+        for (j = 0; j < result.cols; j++) {
+            cout << result.matrix[i][j];
+            if (j + 1 != result.cols)
+                cout << (", ");
+        }
+        cout << ("]\n");
+    }
+}
+
+//Get input for  first operand matrix
+void Controller::inputMatrix1() {
+    //Print header
+    cout << "\n(" << operation << ") MATRIX 1 INPUT:\n";
+
+    int r, c, temp;
 
     //Get row input
-    cout << "Enter Matrix Rows (1-" << MATRIX << "):";
-    cin >> d[0];
+    cout << "Enter Matrix Rows (1-" << MAXDIM << "):";
+    cin >> r;
 
     //Fully error check input
     //If row is smaller than 1 or bigger than set matrix size
-    while (!cin.good() || d[0] < 1 || d[0] > 10) {
+    while (!cin.good() || r < 1 || r > MAXDIM) {
         //Clear invalid value
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         //Keep trying for a valid value
-        cout << "Enter Matrix Rows (1-" << MATRIX << "):";
-        cin >> d[0];
+        cout << "Enter Matrix Rows (1-" << MAXDIM << "):";
+        cin >> r;
     }
 
     //Get column input
-    cout << "Enter Matrix Columns (1-" << MATRIX << "):";
-    cin >> d[1];
+    cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
+    cin >> c;
 
     //Fully error check input
     //If row is smaller than 1 or bigger than set matrix size
-    while (!cin.good() || d[1] < 1 || d[1] > 10) {
+    while (!cin.good() || c < 1 || c > MAXDIM) {
         //Clear invalid value
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         //Keep trying for a valid value
-        cout << "Enter Matrix Columns (1-" << MATRIX << "):";
-        cin >> d[1];
+        cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
+        cin >> c;
     }
+
+    //Allocate matrix with dimensions
+    matrix1.setSize(r, c);
 
     cout << ("\n");
 
     int i, j;
 
     //Loop by dimension input
-    for (i = 0; i < d[0]; i++) {
-        for (j = 0; j < d[1]; j++) {
+    for (i = 0; i < matrix1.rows; i++) {
+        for (j = 0; j < matrix1.cols; j++) {
             //Get individual matrix value input
             cout << "Enter Matrix[" << i << "][" << j << "] Value:";
-            cin >> m[i][j];
+            cin >> temp;
 
             //Fully error check input
             //If input is smaller or bigger than set max value
-            while (!cin.good() || m[i][j] > MAXVAL || m[i][j] < -(MAXVAL)) {
+            while (!cin.good() || temp > MAXVAL || temp < -(MAXVAL)) {
                 //Clear invalid value
                 cin.clear();
                 cin.ignore(INT_MAX, '\n');
                 //Keep trying for a valid value
                 cout << "Enter Matrix[" << i << "][" << j << "] Value:";
-                cin >> m[i][j];
+                cin >> temp;
             }
+
+            //Set matrix value to valid input value
+            matrix1.matrix[i][j] = temp;
         }
     }
+}
 
-    //Set all input values to an operand matrix
-    setOperand(m, d, matrix);
+//Get input for a matrix. Set specific operand matrix values to input values
+void Controller::inputMatrix2() {
+    //Print header
+    cout << "\n(" << operation << ") MATRIX 2 INPUT:\n";
+
+    int r, c, temp;
+
+    //Get row input
+    cout << "Enter Matrix Rows (1-" << MAXDIM << "):";
+    cin >> r;
+
+    //Fully error check input
+    //If row is smaller than 1 or bigger than set matrix size
+    while (!cin.good() || r < 1 || r > MAXDIM) {
+        //Clear invalid value
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        //Keep trying for a valid value
+        cout << "Enter Matrix Rows (1-" << MAXDIM << "):";
+        cin >> r;
+    }
+
+    //Get column input
+    cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
+    cin >> c;
+
+    //Fully error check input
+    //If row is smaller than 1 or bigger than set matrix size
+    while (!cin.good() || c < 1 || c > MAXDIM) {
+        //Clear invalid value
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        //Keep trying for a valid value
+        cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
+        cin >> c;
+    }
+
+    //Allocate matrix with dimensions
+    matrix2.setSize(r, c);
+
+    cout << ("\n");
+
+    int i, j;
+
+    //Loop by dimension input
+    for (i = 0; i < matrix2.rows; i++) {
+        for (j = 0; j < matrix2.cols; j++) {
+            //Get individual matrix value input
+            cout << "Enter Matrix[" << i << "][" << j << "] Value:";
+            cin >> temp;
+
+            //Fully error check input
+            //If input is smaller or bigger than set max value
+            while (!cin.good() || temp > MAXVAL || temp < -(MAXVAL)) {
+                //Clear invalid value
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                //Keep trying for a valid value
+                cout << "Enter Matrix[" << i << "][" << j << "] Value:";
+                cin >> temp;
+            }
+
+            //Set matrix value to valid input value
+            matrix2.matrix[i][j] = temp;
+        }
+    }
 }
 
 //Operation attribute getter and setter
