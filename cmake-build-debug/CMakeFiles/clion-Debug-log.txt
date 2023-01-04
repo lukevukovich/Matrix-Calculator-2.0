@@ -1,4 +1,4 @@
-C:\Users\lukas.vukovich\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/lukas.vukovich/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/ninja/win/ninja.exe -G Ninja -S D:\Programming\C++\MatrixCalculator2.0 -B D:\Programming\C++\MatrixCalculator2.0\cmake-build-debug
+C:\Users\Luke\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/Luke/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.7571.171/bin/ninja/win/ninja.exe -G Ninja -S F:\Programming\C++\MatrixCalculator2.0 -B F:\Programming\C++\MatrixCalculator2.0\cmake-build-debug
 -- The C compiler identification is GNU 6.3.0
 -- The CXX compiler identification is GNU 6.3.0
 -- Detecting C compiler ABI info
@@ -13,4 +13,4 @@ C:\Users\lukas.vukovich\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/Programming/C++/MatrixCalculator2.0/cmake-build-debug
+-- Build files have been written to: F:/Programming/C++/MatrixCalculator2.0/cmake-build-debug
