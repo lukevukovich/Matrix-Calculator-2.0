@@ -87,6 +87,9 @@ void Controller::inputMatrix1() {
         cin >> r;
     }
 
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
+
     //Get column input
     cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
     cin >> c;
@@ -101,6 +104,9 @@ void Controller::inputMatrix1() {
         cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
         cin >> c;
     }
+
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
 
     //Allocate matrix with dimensions
     matrix1.setSize(r, c);
@@ -126,6 +132,9 @@ void Controller::inputMatrix1() {
                 cout << "Enter Matrix[" << i << "][" << j << "] Value:";
                 cin >> temp;
             }
+
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
 
             //Set matrix value to valid input value
             matrix1.matrix[i][j] = temp;
@@ -155,6 +164,9 @@ void Controller::inputMatrix2() {
         cin >> r;
     }
 
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
+
     //Get column input
     cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
     cin >> c;
@@ -169,6 +181,9 @@ void Controller::inputMatrix2() {
         cout << "Enter Matrix Columns (1-" << MAXDIM << "):";
         cin >> c;
     }
+
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
 
     //Allocate matrix with dimensions
     matrix2.setSize(r, c);
@@ -194,6 +209,9 @@ void Controller::inputMatrix2() {
                 cout << "Enter Matrix[" << i << "][" << j << "] Value:";
                 cin >> temp;
             }
+
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
 
             //Set matrix value to valid input value
             matrix2.matrix[i][j] = temp;
@@ -230,6 +248,9 @@ char Controller::operationInput() {
         cin >> o;
     }
 
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
+
     return o;
 }
 
@@ -260,6 +281,9 @@ char Controller::choiceInput() {
         cout << ("KEEP PREVIOUS DATA? (y/n):");
         cin >> c;
     }
+
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
 
     return c;
 }
